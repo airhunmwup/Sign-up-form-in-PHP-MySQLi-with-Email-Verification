@@ -27,7 +27,7 @@
   			header('location:signup.php');
 		}
 		else{
-		//depends on how you set your verification code
+		//Based of how you set your verification code
 		$set='123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$code=substr(str_shuffle($set), 0, 12);
 
@@ -37,7 +37,7 @@
 
 		//sending email verification
 		$to = $email;
-			$subject = "Sign Up Verification Code";
+			$subject = "Sign up Code for Authentication";
 			$message = "
 				<html>
 				<head>
@@ -48,7 +48,7 @@
 				<p>Your Account:</p>
 				<p>Email: ".$email."</p>
 				<p>Password: ".$_POST['password']."</p>
-				<p>Please click the link below to activate your account.</p>
+				<p>To trigger your account please press the link below.</p>
 				<h4><a href='http://localhost/send_mail/activate.php?uid=$uid&code=$code'>Activate My Account</h4>
 				</body>
 				</html>
@@ -56,12 +56,12 @@
 			//dont forget to include content-type on header if your sending html
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= "From: webmaster@sourcecodester.com". "\r\n" .
-						"CC: ndevierte@gmail.com";
+			$headers .= "From: info@airhco-dev.co.uk". "\r\n" .
+						"CC: airhunmwundepresh@gmail.com";
 
 		mail($to,$subject,$message,$headers);
 
-		$_SESSION['sign_msg'] = "Verification code sent to your email.";
+		$_SESSION['sign_msg'] = "Verification code sent to your e-mail address.";
   		header('location:signup.php');
 
   		}
